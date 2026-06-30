@@ -13,6 +13,7 @@ body{
 }
 
 /* PARTICLES */
+
 #particles{
   position:fixed;
   width:100%;
@@ -21,14 +22,13 @@ body{
 }
 
 /* SECTION */
+
 .section{
   min-height:100vh;
 
   display:flex;
   justify-content:center;
   align-items:center;
-
-  text-align:center;
 
   padding:100px 20px;
 
@@ -49,6 +49,7 @@ body{
 }
 
 /* LOADER */
+
 #loader{
   position:fixed;
   width:100%;
@@ -134,6 +135,7 @@ body{
 }
 
 /* NAV */
+
 nav{
   position:fixed;
   top:0;
@@ -146,37 +148,30 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  flex-wrap:wrap;
 
   padding:15px 30px;
 
-  background:rgba(5,8,22,.7);
+  background:rgba(5,8,22,.75);
 
   backdrop-filter:blur(14px);
-
-  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
-  font-size:1.3rem;
-  font-weight:600;
   color:#ff8de1;
+  font-weight:700;
 }
 
 nav ul{
   display:flex;
-  gap:18px;
+  gap:20px;
   list-style:none;
   flex-wrap:wrap;
-  justify-content:center;
 }
 
 nav a{
   text-decoration:none;
   color:white;
-  font-size:.95rem;
   transition:.3s;
-  white-space:nowrap;
 }
 
 nav a:hover{
@@ -184,10 +179,13 @@ nav a:hover{
 }
 
 /* HERO */
+
 #hero{
+  text-align:center;
+
   background:
-  linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-  url("images/hero-bg.jpg");
+  linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.7)),
+  url("images/photo5.jpg");
 
   background-size:cover;
   background-position:center;
@@ -224,6 +222,7 @@ nav a:hover{
 }
 
 @keyframes fadeMessage{
+
   from{
     opacity:0;
     transform:translateY(20px);
@@ -233,300 +232,346 @@ nav a:hover{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 /* TITLES */
-.section-title,
-.playlist-title{
+
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+
   font-size:3rem;
-  margin-bottom:50px;
 
   color:#ffb3ff;
 }
 
 /* TIMELINE */
-.timeline-item{
-  margin:30px 0;
 
+.timeline-box{
+  display:grid;
+  gap:25px;
+}
+
+.timeline-item{
   padding:30px;
 
   background:rgba(255,255,255,.05);
 
   border-left:4px solid #ff8de1;
 
-  border-radius:15px;
-}
-
-/* PLAYLIST */
-#playlist{
-  background:linear-gradient(
-    135deg,
-    #120018,
-    #2b0038,
-    #4b006e
-  );
-}
-
-.playlist-slider{
-  display:flex;
-  gap:25px;
-
-  overflow-x:auto;
-
-  scroll-snap-type:x mandatory;
-
-  padding-bottom:20px;
-}
-
-.playlist-slider::-webkit-scrollbar{
-  display:none;
-}
-
-.song-card{
-  min-width:280px;
-
-  background:rgba(255,255,255,.08);
-
-  border-radius:25px;
-
-  padding:20px;
-
-  transition:.4s;
-}
-
-.song-card:hover{
-  transform:translateY(-10px);
-}
-
-.song-card img{
-  width:100%;
-  height:250px;
-
-  object-fit:cover;
-
   border-radius:20px;
-}
 
-.song-card h3{
-  margin:20px 0;
-}
-
-.song-card audio{
-  width:100%;
+  backdrop-filter:blur(12px);
 }
 
 /* JOKES */
+
 .jokes-container{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  justify-content:center;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
 }
 
 .joke-card{
-  width:250px;
+  padding:35px;
 
-  padding:30px;
+  border-radius:25px;
 
-  background:rgba(255,255,255,.08);
+  background:rgba(255,255,255,.06);
 
-  border-radius:20px;
+  border:1px solid rgba(255,255,255,.08);
 
   transition:.4s;
+
+  text-align:center;
+}
+
+.joke-card span{
+  font-size:3rem;
+}
+
+.joke-card h3{
+  margin:20px 0 10px;
 }
 
 .joke-card:hover{
-  transform:translateY(-10px);
+  transform:translateY(-10px) rotate(-1deg);
 }
 
 /* AI */
-.ai-box{
-  display:flex;
-  gap:40px;
-  flex-wrap:wrap;
 
-  justify-content:center;
-  align-items:center;
+.ai-container{
 
-  background:rgba(255,255,255,.05);
+  max-width:800px;
 
-  padding:40px;
+  margin:auto;
+
+  background:rgba(255,255,255,.06);
 
   border-radius:30px;
+
+  padding:30px;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(16px);
+
 }
 
-.ai-avatar img{
-  width:250px;
+.ai-header{
+  display:flex;
+  align-items:center;
+  gap:15px;
+
+  margin-bottom:25px;
+}
+
+.ai-status{
+  width:15px;
+  height:15px;
 
   border-radius:50%;
 
-  border:5px solid #ff8de1;
+  background:#00ff99;
+
+  box-shadow:0 0 15px #00ff99;
 }
 
-.chat-area{
-  width:400px;
-}
+.chat-window{
+  height:400px;
 
-#chat-output{
-  min-height:160px;
+  overflow-y:auto;
 
-  background:rgba(255,255,255,.08);
-
-  padding:25px;
+  background:rgba(0,0,0,.25);
 
   border-radius:20px;
+
+  padding:20px;
+
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 }
 
-#user-input{
-  width:100%;
+.message{
+  max-width:75%;
 
-  margin-top:20px;
+  padding:15px 18px;
 
-  padding:15px;
+  border-radius:20px;
 
-  border:none;
-  border-radius:12px;
+  line-height:1.5;
+
+  animation:fadeIn .4s ease;
 }
 
-#ask-btn{
-  margin-top:15px;
+.message.joe{
+  align-self:flex-start;
 
-  padding:12px 30px;
+  background:rgba(255,141,225,.15);
+}
+
+.message.user{
+  align-self:flex-end;
+
+  background:rgba(139,92,246,.18);
+}
+
+.choice-container{
+  display:flex;
+  gap:15px;
+
+  flex-wrap:wrap;
+
+  margin-top:25px;
+}
+
+.choice-btn{
+  padding:14px 20px;
 
   border:none;
   border-radius:30px;
 
-  background:#ff8de1;
+  cursor:pointer;
+
+  background:rgba(255,255,255,.08);
 
   color:white;
 
-  cursor:pointer;
+  transition:.3s;
+}
+
+.choice-btn:hover{
+  transform:translateY(-4px);
+
+  background:rgba(255,141,225,.2);
 }
 
 /* GALLERY */
+
 .gallery{
-  display:flex;
-  gap:25px;
-  flex-wrap:wrap;
-  justify-content:center;
+  columns:3 250px;
+  column-gap:20px;
 }
 
 .gallery-card{
-  width:220px;
+  margin-bottom:20px;
 
-  background:white;
+  overflow:hidden;
 
-  padding:10px 10px 40px;
-
-  border-radius:15px;
+  border-radius:25px;
 
   position:relative;
+
+  background:#111;
+
+  break-inside:avoid;
 }
 
 .gallery-card img{
   width:100%;
-  height:300px;
 
-  object-fit:cover;
+  display:block;
 
-  border-radius:10px;
+  transition:.6s;
 }
 
-/* COUNTDOWN */
-.countdown-box{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  justify-content:center;
+.gallery-card:hover img{
+  transform:scale(1.08);
+  filter:brightness(.8);
 }
 
-.time-card{
-  width:120px;
+.gallery-card::after{
+  content:"💜";
 
-  padding:25px;
+  position:absolute;
+  bottom:15px;
+  right:15px;
 
-  background:rgba(255,255,255,.08);
+  font-size:1.5rem;
 
-  border-radius:20px;
+  opacity:0;
+
+  transition:.4s;
 }
 
-.time-card span{
-  font-size:2rem;
-  color:#ff8de1;
-  font-weight:bold;
+.gallery-card:hover::after{
+  opacity:1;
 }
 
-/* VIDEO */
-.video-container{
-  width:100%;
+/* LETTER */
 
-  margin-top:50px;
-
+.letter-wrapper{
   display:flex;
   justify-content:center;
 }
 
-#birthday-video{
-  width:100%;
-  max-width:800px;
-  max-height:500px;
+.letter-paper{
 
-  object-fit:cover;
+  width:100%;
+  max-width:850px;
+
+  min-height:500px;
+
+  padding:60px 40px;
 
   border-radius:25px;
 
-  border:1px solid rgba(255,255,255,.08);
+  background:
+  linear-gradient(
+    180deg,
+    #fffafc,
+    #ffeef8
+  );
+
+  color:#222;
+
+  position:relative;
 
   box-shadow:
-  0 0 40px rgba(255,141,225,.35);
+  0 0 60px rgba(255,141,225,.2);
+
 }
 
-/* ENDING */
+.letter-paper::before{
+  content:"";
+
+  position:absolute;
+  top:0;
+  left:70px;
+
+  width:2px;
+  height:100%;
+
+  background:#ffb3d9;
+}
+
+#typed-letter{
+  font-family:'Caveat',cursive;
+
+  font-size:2rem;
+
+  line-height:1.8;
+
+  white-space:pre-wrap;
+}
+
+/* END */
+
 #ending{
-  background:black;
+  text-align:center;
 }
 
 .ending-text{
   font-size:4rem;
-  text-shadow:0 0 30px #ff8de1;
+
+  text-shadow:0 0 25px #ff8de1;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
 }
 
 /* MOBILE */
+
 @media(max-width:768px){
 
   nav{
     justify-content:center;
-    gap:12px;
-    padding:15px;
-  }
-
-  nav ul{
-    gap:12px;
-  }
-
-  nav a{
-    font-size:.85rem;
+    gap:15px;
   }
 
   .main-title{
     font-size:2.8rem;
   }
 
-  .section-title,
-  .playlist-title{
-    font-size:2rem;
+  .section-title{
+    font-size:2.2rem;
   }
 
-  .chat-area{
-    width:100%;
+  .loader-name{
+    font-size:2.8rem;
   }
 
-  .song-card{
-    min-width:240px;
+  .letter-paper{
+    padding:40px 25px;
   }
 
-  #birthday-video{
-    max-width:100%;
+  #typed-letter{
+    font-size:1.5rem;
   }
 
 }

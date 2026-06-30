@@ -1,4 +1,7 @@
+// =====================
 // LOADER
+// =====================
+
 const enterBtn =
 document.getElementById("enter-btn");
 
@@ -11,7 +14,9 @@ document.getElementById("bg-music");
 music.volume = 0.3;
 
 setTimeout(() => {
-  enterBtn.style.display = "block";
+
+  enterBtn.style.display = "inline-block";
+
 }, 4000);
 
 enterBtn.addEventListener("click", async () => {
@@ -19,21 +24,29 @@ enterBtn.addEventListener("click", async () => {
   loader.style.opacity = "0";
 
   setTimeout(() => {
+
     loader.style.display = "none";
+
   }, 1000);
 
   try{
+
     await music.play();
+
   }
 
   catch(err){
+
     console.log(err);
+
   }
 
 });
 
-
+// =====================
 // SCROLL REVEAL
+// =====================
+
 const sections =
 document.querySelectorAll(".section");
 
@@ -48,7 +61,9 @@ function revealSections(){
     window.innerHeight * 0.85;
 
     if(top < trigger){
+
       section.classList.add("show");
+
     }
 
   });
@@ -62,26 +77,28 @@ window.addEventListener(
 
 revealSections();
 
-
+// =====================
 // PARTICLES
+// =====================
+
 const particles =
 document.getElementById("particles");
 
-for(let i = 0; i < 30; i++){
+for(let i = 0; i < 35; i++){
 
   const particle =
   document.createElement("div");
 
   particle.style.cssText = `
     position:absolute;
-    width:5px;
-    height:5px;
+    width:${2 + Math.random()*5}px;
+    height:${2 + Math.random()*5}px;
     background:#ff8de1;
     border-radius:50%;
     left:${Math.random()*100}vw;
     top:${Math.random()*100}vh;
     opacity:${Math.random()};
-    animation:float ${5 + Math.random()*6}s linear infinite;
+    animation:float ${5 + Math.random()*8}s linear infinite;
   `;
 
   particles.appendChild(particle);
@@ -92,6 +109,7 @@ const style =
 document.createElement("style");
 
 style.innerHTML = `
+
 @keyframes float{
 
   0%{
@@ -99,7 +117,7 @@ style.innerHTML = `
   }
 
   50%{
-    transform:translateY(-60px);
+    transform:translateY(-80px);
   }
 
   100%{
@@ -107,116 +125,149 @@ style.innerHTML = `
   }
 
 }
+
 `;
 
 document.head.appendChild(style);
 
-
-// COUNTDOWN
-const birthday =
-new Date("July 1, 2026 00:00:00")
-.getTime();
-
-setInterval(() => {
-
-  const now =
-  new Date().getTime();
-
-  const distance =
-  birthday - now;
-
-  if(distance <= 0){
-
-    document.querySelector(".ending-text")
-    .innerText =
-    "Happy Birthday Claudia 🎉💜";
-
-    return;
-  }
-
-  document.getElementById("days")
-  .innerText =
-  Math.floor(
-    distance /
-    (1000 * 60 * 60 * 24)
-  );
-
-  document.getElementById("hours")
-  .innerText =
-  Math.floor(
-    (distance %
-    (1000 * 60 * 60 * 24)) /
-    (1000 * 60 * 60)
-  );
-
-  document.getElementById("minutes")
-  .innerText =
-  Math.floor(
-    (distance %
-    (1000 * 60 * 60)) /
-    (1000 * 60)
-  );
-
-  document.getElementById("seconds")
-  .innerText =
-  Math.floor(
-    (distance %
-    (1000 * 60)) / 1000
-  );
-
-}, 1000);
-
-
+// =====================
 // JOE AI
-const askBtn =
-document.getElementById("ask-btn");
+// =====================
 
-const output =
-document.getElementById("chat-output");
+const chatWindow =
+document.getElementById("chat-window");
 
-const input =
-document.getElementById("user-input");
+const choiceBtns =
+document.querySelectorAll(".choice-btn");
 
-function askAI(){
+const replies = {
 
-  const q =
-  input.value.toLowerCase();
+  "Miss me?":
+  "Suspicious question. But yes 💜",
 
-  let response =
-  "Joe AI is thinking 🤖💜";
+  "Start chaos":
+  "Chaos mode activated. Hide the fries immediately 🍟",
 
-  if(q.includes("beautiful")){
-    response =
-    "Even galaxies feel insecure ✨";
-  }
+  "Tell me something sweet":
+  "You have the kind of smile that ruins concentration levels."
+};
 
-  else if(q.includes("future")){
-    response =
-    "Bright, unstoppable 🌌";
-  }
+function addMessage(text, sender){
 
-  else if(q.includes("fries")){
-    response =
-    "Gone 🍟";
-  }
+  const message =
+  document.createElement("div");
 
-  output.innerText =
-  response;
+  message.classList.add(
+    "message",
+    sender
+  );
+
+  message.innerText = text;
+
+  chatWindow.appendChild(message);
+
+  chatWindow.scrollTop =
+  chatWindow.scrollHeight;
 
 }
 
-askBtn.addEventListener(
-  "click",
-  askAI
-);
+choiceBtns.forEach(btn => {
 
-input.addEventListener(
-  "keypress",
-  e => {
+  btn.addEventListener("click", () => {
 
-    if(e.key === "Enter"){
-      askAI();
-    }
+    const text =
+    btn.innerText;
+
+    addMessage(
+      text,
+      "user"
+    );
+
+    setTimeout(() => {
+
+      addMessage(
+        replies[text],
+        "joe"
+      );
+
+    }, 700);
+
+  });
+
+});
+
+// =====================
+// LETTER TYPEWRITER
+// =====================
+
+const typedLetter =
+document.getElementById("typed-letter");
+
+const letter = `
+
+Dear Claudia,
+
+Happy Birthday 💜
+
+I hope this year becomes one of those years you look back at and smile without even realizing it.
+
+You are genuinely one of the most interesting people I’ve met.
+Not because you try too hard.
+Actually the opposite.
+
+You just exist naturally with this calm chaos around you.
+One minute soft.
+Next minute dangerous to peace and concentration levels.
+
+Your smile has side effects by the way.
+Scientifically unexplainable.
+
+I also think it’s beautiful how you carry your energy.
+You make moments feel lighter.
+Even ordinary conversations somehow become memorable.
+
+And honestly?
+I hope life becomes kinder to you this year.
+
+I hope opportunities find you.
+I hope your confidence grows louder.
+I hope your dreams stop feeling distant.
+
+Most importantly...
+I hope you never lose the part of you that makes you uniquely Claudia.
+
+Thank you for existing in my timeline 💜
+
+Happy 19.
+
+`;
+
+let i = 0;
+
+function typeLetter(){
+
+  if(i < letter.length){
+
+    typedLetter.innerHTML +=
+    letter.charAt(i);
+
+    i++;
+
+    setTimeout(
+      typeLetter,
+      35
+    );
 
   }
-);
+
+}
+
+window.addEventListener("load", () => {
+
+  setTimeout(() => {
+
+    typeLetter();
+
+  }, 2500);
+
+});
