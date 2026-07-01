@@ -145,8 +145,8 @@ const replies = {
   "Miss me?":
   "Suspicious question. But yes 💜",
 
-  "Start chaos":
-  "Chaos mode activated. Hide the fries immediately 🍟",
+"Start chaos":
+"You entered the chat and suddenly the atmosphere changed ✨",
 
   "Tell me something sweet":
   "You have the kind of smile that ruins concentration levels."
